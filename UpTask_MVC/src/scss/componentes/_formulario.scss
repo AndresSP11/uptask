@@ -1,0 +1,23 @@
+@use '../base/variables' as v;
+@use '../base/mixins' as m;
+
+.formulario{
+    /* A LA CABECERA LE DA UN TOP DE 5 REM */
+    margin-top: 5rem;
+    .campo{
+        display: flex;
+        align-items: center;
+        margin-bottom: 2rem;
+        label{
+          flex: 0 0 10rem;
+        }
+        input{
+          border-radius: 15px;
+          flex: 1; 
+          padding: 1rem;
+          border: none;
+          background-color: lighten(v.$gris, 40%);
+        }
+    }
+    
+}

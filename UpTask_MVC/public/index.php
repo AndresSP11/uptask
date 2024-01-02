@@ -19,7 +19,7 @@ $router->get('/logout',[LoginController::class,'logout']);
 //Crear Cuenta
 
 $router->get('/crear',[LoginController::class,'crear']);
-$router->get('/crear',[LoginController::class,'crear']);
+$router->post('/crear',[LoginController::class,'crear']);
 
 //Olvide Password, donde se introducirá el correo.
 

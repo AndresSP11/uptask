@@ -6,21 +6,27 @@ namespace Controllers;
 use MVC\Router;
 
 class LoginController{
+    /* ########################## */
+    
+    /* CONTROLANDO EL LOGIN EN BASE AL CONTROLLER */
+
     public static function login(Router $router){
         if($_SERVER['REQUEST_METHOD']==='POST'){
-            
+            /* Esto si en caso el metodo es POST se va procesar los datos o variables correspondientes */
+
+
         }
+    /* Aqui se genera las variables de $router */
     $router->render('auth/login',[
         'titulo'=>'Iniciar Sesión'
     ]);
-    }
     
 
+    }
     public static function logout(){
         /* Metodo get suficiente para cerrar sesión */
         echo "Desde logout"; 
     }
-
 
 
     public static function crear(Router $router){

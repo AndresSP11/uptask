@@ -1,5 +1,7 @@
 <?php 
 
+/* AQUI SE HACE LLAMADO DEL COMPOSER */
+
 require 'funciones.php';
 require 'database.php';
 require __DIR__ . '/../vendor/autoload.php';
