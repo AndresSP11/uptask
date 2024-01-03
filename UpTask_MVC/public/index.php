@@ -34,7 +34,7 @@ $router->post('/reestablecer',[LoginController::class,'reestablecer']);
 //Confirmación de Cuenta
 
 $router->get('/mensaje',[LoginController::class,'mensaje']);
-$router->post('/confirmar',[LoginController::class,'confirmar']);
+$router->get('/confirmar',[LoginController::class,'confirmar']);
 
 
 //Formulario de Olvide mi password

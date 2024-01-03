@@ -3,6 +3,7 @@
 
 namespace Controllers;
 
+use Model\Usuario;
 use MVC\Router;
 
 class LoginController{
@@ -28,36 +29,55 @@ class LoginController{
         echo "Desde logout"; 
     }
 
-
+    /* AQUI VAMOS A CREAR LA CUENTA ANTES DE PROCEDER A USAR LOGIN */
     public static function crear(Router $router){
         
-        if($_SERVER['REQUEST_METHOD']==='POST'){
+        /* AQUI SE ESTA IMPORTANDO EL USUARIO  */
+        $usuario=new Usuario();
 
+        if($_SERVER['REQUEST_METHOD']==='POST'){
+            /* ESTO PARA QUE SE QUEDE, RECORDAR COLOCAR EN EL VALUE CADA INPUT PARA QUE NO SE PIERDA  */
+            $usuario->sincronizar($_POST);
+
+            $alertas=$usuario->validarNuevaCuenta();
+
+            debuguear($alertas);
         }
+        /* AQUI SE VAN A MANDAR LAS FUNCIONES DE CREAR  */
+        /* EN ESTE CASO TAMBIEN SE ESTAN MANDANDO EN EL LOGIN CONTROLLER LAS VARIABLES CORESPONDIENTES A LOS VIEWS */
     $router->render('auth/crear',[
-        'titulo'=>'Crear'
+        'titulo'=>'Crear',
+        'usuario'=>$usuario
     ]);
     }
 
-
-    public static function olvide(){
+    /* No olvidar la definición de Router */
+    public static function olvide(Router $router){
         echo "Desde olvide"; 
         if($_SERVER['REQUEST_METHOD']==='POST'){
 
         }
+    $router->render('auth/olvide',[
+        'titulo'=>'Olvide'
+    ]);
     }
-    public static function reestablecer(){
-        echo "Desde reestablecer"; 
+    public static function reestablecer(Router $router){
         if($_SERVER['REQUEST_METHOD']==='POST'){
 
         }
+        $router->render('auth/reestablecer',[
+            'titulo'=>'Reestablecer Password'
+        ]);
     }
-    public static function mensaje(){
-        echo "Desde mensaje"; 
+    public static function mensaje(Router $router){
+        $router->render('auth/mensaje',[
+            'titulo'=>'Mensaje'
+        ]);
     }
-    public static function confirmar(){
-        echo "Desde confirmar"; 
-        
+    public static function confirmar(Router $router){
+        $router->render('auth/confirmar',[
+            'titulo'=>'Confirma tu cuenta UpTask'
+        ]);
     }
 }
 
