@@ -37,6 +37,9 @@ class Usuario extends ActiveRecord{
         if(!$this->email){
             self::$alertas['error'][]="El Email del Usuario es Obligatorio";
         }
+        if(!$this->password){
+            self::$alertas['error'][]="El Password del Usuario no puede ir vacio";
+        }
         return self::$alertas;
     }
 

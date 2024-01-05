@@ -41,6 +41,8 @@ class LoginController{
 
             $alertas=$usuario->validarNuevaCuenta();
 
+            
+
             debuguear($alertas);
         }
         /* AQUI SE VAN A MANDAR LAS FUNCIONES DE CREAR  */
