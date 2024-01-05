@@ -36,20 +36,17 @@ class LoginController{
         $usuario=new Usuario();
 
         if($_SERVER['REQUEST_METHOD']==='POST'){
-            /* ESTO PARA QUE SE QUEDE, RECORDAR COLOCAR EN EL VALUE CADA INPUT PARA QUE NO SE PIERDA  */
+            /* ESTO PARA QUE SE QUEDE, RECORDAR COLOCAR EN EL VALUE CADA INPUT PARA QUE NO SE PIERDA , osea sincronizar es PARA DARLE EL POST */
             $usuario->sincronizar($_POST);
-
+            /* Aqui pasaran las validaciones correpondientes */
             $alertas=$usuario->validarNuevaCuenta();
-
-            
-
-            debuguear($alertas);
         }
         /* AQUI SE VAN A MANDAR LAS FUNCIONES DE CREAR  */
         /* EN ESTE CASO TAMBIEN SE ESTAN MANDANDO EN EL LOGIN CONTROLLER LAS VARIABLES CORESPONDIENTES A LOS VIEWS */
     $router->render('auth/crear',[
         'titulo'=>'Crear',
-        'usuario'=>$usuario
+        'usuario'=>$usuario,
+        'alertas'=>$alertas
     ]);
     }
 

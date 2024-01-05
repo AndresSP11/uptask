@@ -44,7 +44,7 @@
             <input type="submit" class="boton" value="Iniciar Sesión">
         </form>
         <!-- Forma en la que se manda a los demás -->
-        <div class="acciones">
+            <div class="acciones">
             <a href="./">Tienes una cuenta, Logeate... </a>
             <a href="./olvide">Olvidaste tu password</a>
         </div>
