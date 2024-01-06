@@ -31,14 +31,14 @@ class LoginController{
 
     /* AQUI VAMOS A CREAR LA CUENTA ANTES DE PROCEDER A USAR LOGIN */
     public static function crear(Router $router){
-        
+        $alertas=[];
         /* AQUI SE ESTA IMPORTANDO EL USUARIO  */
         $usuario=new Usuario();
 
         if($_SERVER['REQUEST_METHOD']==='POST'){
             /* ESTO PARA QUE SE QUEDE, RECORDAR COLOCAR EN EL VALUE CADA INPUT PARA QUE NO SE PIERDA , osea sincronizar es PARA DARLE EL POST */
             $usuario->sincronizar($_POST);
-            /* Aqui pasaran las validaciones correpondientes */
+            /* Aqui pasaran las validaciones correpondientes - Función qyue se encuentra en el modelo de Usuario*/
             $alertas=$usuario->validarNuevaCuenta();
         }
         /* AQUI SE VAN A MANDAR LAS FUNCIONES DE CREAR  */
