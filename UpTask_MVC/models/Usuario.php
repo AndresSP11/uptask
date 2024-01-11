@@ -36,6 +36,7 @@ class Usuario extends ActiveRecord{
     public function validarNuevaCuenta(){
         /* this nombre, si se pone, si no se pone sale falso , pero como se niega es verdadero por eso pasa la validación */
         if(!$this->nombre){
+            /* Los self vieenn asiganados por que son estaticos */
             self::$alertas['error'][]="El nombre del Usuario es Obligatorio";
         }
         if(!$this->email){
@@ -58,6 +59,29 @@ class Usuario extends ActiveRecord{
     }
     public function crearToken(){
         $this->token=uniqid();
+    }
+    public function validarEmail(){
+        if(!$this->email){
+            self::$alertas['error'][]="Introduce un Email valido porfavor";
+        }
+        if(!filter_var($this->email,FILTER_VALIDATE_EMAIL)){
+            self::$alertas['error'][]="Email no vàlido";
+        }
+    }
+    public function validarPassword(){
+        if(!$this->password){
+            self::$alertas['error'][]="El Password del Usuario no puede ir vacio";
+        }
+        if(strlen($this->password)<6){
+            self::$alertas['error'][]="El Password debe de contener almenos 6 caracteres";
+        }
+        return self::$alertas;
+    }
+    public function validarLogin(){
+        if(!$this->email){
+            self::$alertas['error'][]="El email que has enviado esta mal colocado porfavor corrigelo";
+        }
+        return self::$alertas;
     }
 
 

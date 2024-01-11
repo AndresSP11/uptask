@@ -5,7 +5,7 @@
     <div class="contenedor-sm">
 
         <p class="descripcion-pagina">Iniciar Sesión</p>
-
+        <?php include __DIR__.'/../templates/alertas.php';?>
         <form action="/" class="formulario" method="POST">
             <div class="campo">
                 <label for="email">Email: </label>
@@ -13,7 +13,8 @@
                 type="email"
                 id="email"
                 placeholder="Tu Email"
-                name="email">
+                name="email"
+                value="<?php echo $usuario->email?>">
             </div>
             <div class="campo">
                 <label for="password">Password: </label>
