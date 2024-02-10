@@ -17,18 +17,43 @@ class LoginController{
         $alertas=[];
 
         $usuario=new Usuario();
+
         if($_SERVER['REQUEST_METHOD']==='POST'){
+
             $usuario->sincronizar($_POST);
             /* Esto si en caso el metodo es POST se va procesar los datos o variables correspondientes */
             /* Esta utilizando la parte de arg, para procederlo  */
-            $usuario->validarLogin();
-
-            
+            $alertas=$usuario->validarLogin();
 
             if(empty($alertas)){
+                //Verificamos que el usuario Existe 
+                /* Si existe el Usuario se van a tomar los datos del crear para extraer la información corresondiente */
+                $existeUsuario=Usuario::where('email',$usuario->email);
                 
-            }else{
-                Usuario::setAlerta('error','No existe el Usuario lo sentimos');
+                if(!$existeUsuario){
+                    Usuario::setAlerta('error','No existe este Usuario porfavor introduce uno valido');
+                    
+                }else{
+                    if($existeUsuario->confirmado=="0"){
+                        Usuario::setAlerta('error','El usuario no se encuentra confirmado aún');
+                    }else{
+                        //El Usuario Existe;
+                        if(password_verify($_POST['password'], $existeUsuario->password)){
+                            session_start();
+                            /* Orientando todos los valores para la Sesion */
+                            $_SESSION['id']=$existeUsuario->id;
+                            $_SESSION['nombre']=$existeUsuario->nombre;
+                            $_SESSION['email']=$existeUsuario->email;
+                            $_SESSION['login']=true;
+                            header('Location: /dashboard');
+                            debuguear($_SESSION);
+                        }else{
+                            Usuario::setAlerta('error','La contraseña ingresada es incorrecto');
+                        }
+
+                    }
+                }
+                /* debuguear($existeUsuario); */
             }
 
             $alertas=Usuario::getAlertas();
@@ -47,8 +72,9 @@ class LoginController{
 
     public static function logout(Router $router){
         /* Metodo get suficiente para cerrar sesión */
-        echo "Desde logout"; 
-        
+        session_start();
+        $_SESSION=[];
+        header('Location:/');
     }
 
 

@@ -81,6 +81,9 @@ class Usuario extends ActiveRecord{
         if(!$this->email){
             self::$alertas['error'][]="El email que has enviado esta mal colocado porfavor corrigelo";
         }
+        if(!$this->password){
+            self::$alertas['error'][]="El Password del Usuario no puede ir vacio";
+        }
         return self::$alertas;
     }
 

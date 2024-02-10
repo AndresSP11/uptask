@@ -11,11 +11,12 @@
     max-width: 80rem;
     color: white;
     &.error{
+        margin-top: 10px;
         background-color: lighten(v.$rojo,10%);
     }
     &.exito{
         background-color: lighten(v.$verde, 60%);
         border-left: .5rem solid v.$verde;
-        color: v.$rojo;
+        color: v.$blanco;
     }
 }

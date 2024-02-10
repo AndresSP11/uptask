@@ -1,0 +1,8 @@
+/* En cada index.scss se pasará cada correspondiente archivo de sass, en este caso par que surjan los efectos de cada clase*/
+
+@forward 'dashboard';
+@forward 'sidebar';
+@forward 'barra';
+@forward 'proyectos';
+@forward 'tareas';
+@forward 'modal';

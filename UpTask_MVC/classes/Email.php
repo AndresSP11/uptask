@@ -36,7 +36,7 @@ class Email{
         //Recipients
         $mail->setFrom('anderson.salazar.p@uni.edu.pe', 'Confirmación de Cuenta');
         /* Aqui va en el this email, la configuración para mandarle el email correspondiente en su casilla, sea outlook o hotmail */
-        $mail->addAddress('andres.salazar.p@uni.pe', 'Anderson Andres Salazar Pizarro');
+        $mail->addAddress("$this->email", 'Anderson Andres Salazar Pizarro');
         $mail->Subject = 'Confirma Tu Cuenta';
         //Add a recipient
         
